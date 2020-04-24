@@ -1,0 +1,31 @@
+.project
+{
+    text-align: justify;
+    font-size: 125%;
+    
+    overflow: auto;
+    color: "black";
+
+    
+    margin: 1em;
+    padding: 1em;
+    border: 4px double rgba(72,64,80,0.75);
+    border-radius: 10px;
+        
+
+    background: url(img/menu_bground.png);
+
+}
+
+.project > ul > li > a {
+    color: rgba(100, 90, 130, 0.9);
+}
+
+#project_info
+{
+    text-align: justify;
+    font-size: 125%;
+
+
+
+}
