@@ -1,50 +1,17 @@
-
-#news
-{
-    position: center;
-    margin: auto;
-    right: 5vh;
-    top: 3vh;
-    width: 60%;
-
-    border-image-source: url(images/border-no-corners.png);
-    border-image-width: 0.2em 0 0.2em 0;
-    border-image-slice: 5;
-    border-image-repeat: repeat;
-    border-style: solid;
-    border-width: 0.2em;
-    box-sizing: border-box;
-    background: url(img/menu_bground.png);
-    
-    box-shadow: 0.1em 0.5em 2em black;
-
-    overflow: hidden;
-    padding: 0.8em 0;
-    width: 60%;
-    background: rgba(0,0,0,0.9);
-    background: url(img/menu_bground.png);
-    text-align: center;
-    font-size: 2.5vh;
-}
-
 .news
 {
     text-align: justify;
     font-size: 125%;
-    
-    overflow: auto;
-    color: "black";
 
-    
+    overflow: auto;
+
     margin: 1em;
-    padding: 1em;
+    padding: 1.5em;
     border: 4px double rgba(72,64,80,0.75);
     border-radius: 10px;
-        
 
     background: url(img/menu_bground.png);
 }
-
 
 .news > h1
 {
@@ -54,12 +21,52 @@
 
 .news > iframe
 {
+    display: block;
+    width: 450px;
+    height: 250px;
+    margin: 0 auto;
+    padding: 0.75em;
+    border: 0;
+}
 
-        display: block;
-        width: 450px;
-        height: 250px;
-        margin: 0 auto;
-        padding: 0.75em;
-        border: 0;
+.pager {
 
+    display: flex;
+    justify-content: center;
+
+
+}
+
+
+.pager > button {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    margin: 0em 0.3em;
+    border-radius: 0.5em;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+
+.pager > button:hover{
+ color: #bca488;
+ background-color:#1f1f1f;
+}
+
+.pager > button:focus {
+    color: #bca488;
+    background-color:#1f1f1f;   
+}
+
+.pager > .normal-button {
+    border:0.1em solid #000000;
+    background-color: #0c0b0b;
+    color: #FFFFFF;    
+}
+
+.pager > .focused-button {
+    background-color: #1f1f1f;
+    color: #bca488;
+    border-color: white;
 }

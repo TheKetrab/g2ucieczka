@@ -20,6 +20,60 @@
 	<link rel="stylesheet" href="css/news.css" type="text/css" />
 	<link rel="shortcut icon" type="image/x-icon" href="img/icons/ucieczka.png" />
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script>
+			function setPage(page) {
+
+				const total_buttons = 3;
+				var newsDivs = document.getElementsByClassName("news");
+				var pager0 = document.getElementById("pager0");
+				var pager1 = document.getElementById("pager1");
+				for (let child of pager0.children) {
+					debugger;
+					$(child).removeClass("focused-button");
+					$(child).addClass("normal-button");
+				}
+
+				for (let child of pager1.children) {
+					$(child).removeClass("focused-button");
+					$(child).addClass("normal-button");
+				}
+
+				$(pager0.children[page-1]).removeClass("normal-button");
+				$(pager0.children[page-1]).addClass("focused-button");
+				$(pager1.children[page-1]).removeClass("normal-button");
+				$(pager1.children[page-1]).addClass("focused-button");
+
+
+				// pierwsze 4 - docelowe, reszta - newsy
+				let n = newsDivs.length;
+	
+				$(newsDivs[3]).fadeOut(200);
+				$(newsDivs[2]).fadeOut(200);
+				$(newsDivs[1]).fadeOut(200);
+				$(newsDivs[0]).fadeOut(200,function() {
+	
+						for (let i=0; i<4; i++) $(newsDivs[i]).removeClass("disabled");
+						
+						let i=0, j=page*4;
+						while (i < 4 && j < n) {
+							newsDivs[i].innerHTML = newsDivs[j].innerHTML;
+							i++, j++;
+						}
+	
+						for ( ; i<4; i++)	$(newsDivs[i]).addClass("disabled");
+						
+						for (let k=0; k<4; k++) 
+							if (! $(newsDivs[k]).hasClass("disabled"))
+								$(newsDivs[k]).fadeIn(500);
+						
+				});
+	
+			}
+	</script>
+	
+
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164273479-2"></script>
 	<script>
@@ -59,17 +113,38 @@
 
 	<div id="maindiv">
 
-		<div class="news">
-			<h1>DOMENA G2UCEICZKA POWRACA !<br>(4 lipca 2020)</h1>
+
+		<div id="pager0" class="pager">
+			<button class="focused-button" onclick="setPage(1)">1</button>
+			<button class="normal-button" onclick="setPage(2)">2</button>
+			<button class="normal-button" onclick="setPage(3)">3</button>
+		</div>
+
+		<div id="n1" class="news"></div>
+		<div id="n2" class="news"></div>
+		<div id="n3" class="news"></div>
+		<div id="n4" class="news"></div>
+
+		<div id="pager1" class="pager">
+			<button class="focused-button" onclick="setPage(1)">1</button>
+			<button class="normal-button" onclick="setPage(2)">2</button>
+			<button class="normal-button" onclick="setPage(3)">3</button>
+		</div>
+
+		<!-- NEWS -->
+
+		<div class="news disabled">
+			<h1>DOMENA G2 UCIECZKA POWRACA!<br>(4 lipca 2020)</h1>
+			<img class="center" style="border-radius: 20px;" width="420" src="img/netrilo.png">
 			<br>
 			Dzięki uprzejmości firmy <a href="https://netrilo.com/">Netrilo</a>,
 			Ucieczka wraca na standardowy adres <a href="http://g2ucieczka.pl">g2ucieczka.pl</a>.
-			Przygarnęli oni na swoje serwery stronę modyfikacji i ponownie można pobrać tu
-			moda i dowiedzieć się ciekawych informacji. To prawdziwy fenomen, że wśród fanów Gothica
-			istnieje bezinteresowna pomoc - w imię dobra projektu!
+			Przygarnęli oni na swoje serwery stronę modyfikacji i&nbsp;ponownie można pobrać tu
+			moda i&nbsp;dowiedzieć się ciekawych informacji. To prawdziwy fenomen, że wśród fanów Gothica
+			istnieje bezinteresowna pomoc -&nbsp;w imię dobra projektu!
 		</div>
 
-		<div class="news">
+		<div class="news disabled">
 			<h1><s>NOWY ADRES STRONY</s><br>(25 kwietnia 2020)</h1>
 			<br>
 			Minął rok hostowania strony, co oznacza wygaśnięcie zakupionego hostingu i domeny <a href="http://www.g2ucieczka.pl">g2ucieczka.pl</a>.
@@ -78,7 +153,7 @@
 			Paczka z modem jest wrzucona na Dysk Google, a link do niej znajduje się w dziale Download.
 		</div>
 	
-		<div class="news">
+		<div class="news disabled">
 			<h1>YOUTUBERZY NAGRYWAJĄ<br>(20 kwietnia 2020)</h1>
 			<iframe width="420" height="315" 
 			src="https://www.youtube.com/embed/jMHMEnPUdrg">
@@ -97,7 +172,7 @@
 			</ul>
 		</div>
 
-		<div class="news">
+		<div class="news disabled">
 			<h1>UCIECZKA W NOWYM ROKU<br>(1 stycznia 2020)</h1>
 			Patch w wersji 1.1 zaplanowany był jeszcze na koniec 2019, jednak z powodu braku czasu w roku szkolnym prace nie były kontynuowane
 			'na zabój', a wyłącznie hobbystycznie, czasami, weekendowo. Dołożyłem wszelkich starań, aby wydać Ucieczkę przed kilkumiesięcznym wyjazdem
@@ -106,14 +181,14 @@
 			<br>
 		</div>
 
-		<div class="news">
+		<div class="news disabled">
 			<h1>PIERWSZY PATCH<br>(16 lipca 2019)</h1>
 			W dziale Download dostępna jest wersja 1.0.1 zwierająca wszystkie dotychczas wydane łatki. <u>Nie jest to patch 1.1.</u>
 			Zasadniczy patch jest planowany dopiero na przyszł rok!
 			<br>
 		</div>
 		
-		<div class="news">
+		<div class="news disabled">
 			<h1>UCIECZKA UKOŃCZONA !<br>(1 lipca 2019)</h1>
 			<img class="center" width="420" src="img/news/release.jpg">
 			<br>
@@ -121,7 +196,7 @@
 			<br>
 		</div>
 
-		<div class="news">
+		<div class="news disabled">
 			<h1>TRAILER I DATA PREMIERY<br>(9 czerwca 2019)</h1>
 			<iframe width="420" height="315" 
 			src="https://www.youtube.com/embed/Ku6fHRBt2uQ">
@@ -129,7 +204,7 @@
 			<br>
 		</div>
 	
-		<div class="news">
+		<div class="news disabled">
 			<h1>TYSIĄC POLUBIEŃ !<br>(7 maja 2019)</h1>
 			<a target="_blank" href="https://www.facebook.com/G2Ucieczka/photos/a.275946012923184/643319952852453/?type=3&theater">
 				<img class="center" width="420" src="img/news/screen1k.jpg">
@@ -142,7 +217,7 @@
 		</div>
 
 
-		<div class="news">
+		<div class="news disabled">
 			<h1>DRUGI GAMEPLAY<br>(22 kwietnia 2019)</h1>
 				<iframe width="420" height="315" 
 				src="https://www.youtube.com/embed/hj6cU6NoJgM">
@@ -154,12 +229,12 @@
 			zmieniona na całkowicie autorską, nową mapę świata!
 		</div>
 
-		<div class="news">
+		<div class="news disabled">
 			<h1>TIMELAPSE<br>(4 listopada 2018)</h1>
 			<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FG2Ucieczka%2Fvideos%2F296467000995156%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
 		</div>
 
-		<div class="news">
+		<div class="news disabled">
 			<h1>PIERWSZY GAMEPLAY<br>(18 września 2018)</h1>
 			<iframe width="420" height="315" 
 			src="https://www.youtube.com/embed/3kXTf43RVV4">
@@ -172,6 +247,12 @@
 		</div>
   
 	</div>
+
+	<script>
+			// init news divs
+			var newsDivs = document.getElementsByClassName("news");
+			for (let i=0; i<4; i++) newsDivs[i].innerHTML = newsDivs[i+4].innerHTML;
+	</script>
   
 </body>
 
