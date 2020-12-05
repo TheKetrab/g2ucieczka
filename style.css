@@ -211,3 +211,27 @@ img.center {
 .disabled {
     display: none;
 }
+
+.button {
+    font-weight: bold;
+    margin: auto;
+    padding: 10px 20px 10px 20px;
+    border-radius: 15px;
+    border: solid black 4px;
+    background-color: rgb(20, 70, 94);
+
+    transition: background-color 0.2s ease-out,
+                transform 0.3s;
+}
+
+.button:hover {
+    background: black;
+    transform: scale(1.2);
+}
+
+.download-box {
+    display: flex;
+    flex-direction: column;
+
+    
+}
